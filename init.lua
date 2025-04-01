@@ -1,4 +1,5 @@
 --[[
+TODO: Tidy up
 NOTE:
 if you plan to always load your nixCats via nix,
 you can safely ignore this setup call,
@@ -18,9 +19,9 @@ Of course, if you only ever download nvim with nix, this isnt needed.]]
 --[[ function so that it will not throw  ]]
 --[[ an error if not loaded via nixCats  ]]
 --[[ ----------------------------------- ]]
-require('nixCatsUtils').setup {
-  non_nix_value = true,
-}
+--require('nixCatsUtils').setup {
+--  non_nix_value = true,
+--}
 --[[
 Nix puts the plugins
 into the directories paq-nvim expects them to be in,
@@ -34,7 +35,7 @@ and you should keep any setup functions
 OUT of that file, as they are ONLY loaded when this
 configuration is NOT loaded via nix.
 --]]
-require("myLuaConf.non_nix_download")
+--require("myLuaConf.non_nix_download")
 -- OK, again, that isnt needed if you load this setup via nix, but it is an option.
 
 --[[
@@ -57,4 +58,4 @@ and the lua/myLuaConf/non_nix_download.lua file.
 the rest is just example of how to configure nvim making use of various
 features of nixCats and using the plugin lze for lazy loading.
 --]]
-require('myLuaConf')
+require('ballConf')
