@@ -18,7 +18,7 @@
 # each section is tagged with its relevant help section.
 
 {
-  description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
+  description = "Ballsten's Neovim via NixCats!";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -94,20 +94,48 @@
       # this includes LSPs
       lspsAndRuntimeDeps = {
         general = with pkgs; [
+          ripgrep
+          fd
+        ];
+
+        nixdev = with pkgs; [
+          lua-language-server
+          nix-doc
+          nixd
         ];
       };
 
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
-        general = with pkgs.vimPlugins; [ ];
+        # gitPlugins = with pkgs.neovimPlugins; [ ];
+        general = with pkgs.vimPlugins; [
+          lze
+          lzextras
+        ];
+
+        # Themes
+        themer = with pkgs.vimPlugins;
+          (builtins.getAttr (categories.colorscheme or "onedark") {
+            "onedark" = onedark-nvim;
+            "catppuccin" = catppuccin-nvim;
+            "catppuccin-mocha" = catppuccin-nvim;
+            "tokyonight" = tokyonight-nvim;
+            "cyberdream" = cyberdream-nvim;
+          }
+        );
       };
 
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
-        general = with pkgs.vimPlugins; [ ];
+        # gitPlugins = with pkgs.neovimPlugins; [ ];
+        general = with pkgs.vimPlugins; [
+          "nvim-lspconfig"
+        ];
+
+        nixdev = with pkgs.vimPlugins; [
+          "lazydev-nvim"
+        ];
       };
 
       # shared libraries to be added to LD_LIBRARY_PATH
@@ -123,7 +151,7 @@
       # at RUN TIME for plugins. Will be available to path within neovim terminal
       environmentVariables = {
         test = {
-          CATTESTVAR = "It worked!";
+          # CATTESTVAR = "It worked!";
         };
       };
 
@@ -132,7 +160,7 @@
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh
       extraWrapperArgs = {
         test = [
-          '' --set CATTESTVAR2 "It worked again!"''
+          # '' --set CATTESTVAR2 "It worked again!"''
         ];
       };
 
@@ -172,7 +200,7 @@
           wrapRc = true;
           # IMPORTANT:
           # your alias may not conflict with your other packages.
-          aliases = [ "vim" ];
+          aliases = [ ];
           # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
         };
         # and a set of categories that you want
@@ -182,15 +210,23 @@
           gitPlugins = true;
           customPlugins = true;
           test = true;
-          example = {
-            youCan = "add more than just booleans";
-            toThisSet = [
-              "and the contents of this categories set"
-              "will be accessible to your lua with"
-              "nixCats('path.to.value')"
-              "see :help nixCats"
-            ];
-          };
+
+          # Development
+          nixdev = true;
+
+          # Theme
+          colorscheme = "cyberdream";
+          themer = true;
+
+          # example = {
+          #   youCan = "add more than just booleans";
+          #   toThisSet = [
+          #     "and the contents of this categories set"
+          #     "will be accessible to your lua with"
+          #     "nixCats('path.to.value')"
+          #     "see :help nixCats"
+          #   ];
+          # };
         };
       };
     };
