@@ -1,3 +1,4 @@
+-- Themeing
 local colorschemeName = nixCats('colorscheme')
 if not require('nixCatsUtils').isNixCats then
   colorschemeName = 'onedark'
@@ -7,6 +8,21 @@ end
 -- this is just an example, feel free to do a better job!
 vim.cmd.colorscheme(colorschemeName)
 
+-- load snacks early in the piece
+require("lze").load({
+  "snacks.nvim",
+  for_cat = 'essential.ui',
+  lazy = false,
+  after = function(_)
+    local notify = vim.notify
+    require('snacks').setup({})
+    -- TODO: need this hack for NOICE
+    -- vim.notify = notify
+  end,
+})
+
+
+-- TODO: everything below here is boilerplate
 local ok, notify = pcall(require, "notify")
 if ok then
   notify.setup({
