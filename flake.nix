@@ -215,7 +215,7 @@
           nixdev = true;
 
           # Theme
-          colorscheme = "cyberdream";
+          colorscheme = "catppuccin-mocha";
           themer = true;
 
           # example = {
@@ -227,6 +227,16 @@
           #     "see :help nixCats"
           #   ];
           # };
+          #
+          extra = {
+            # to keep the categories table from being filled with non category things that you want to pass
+            # there is also an extra table you can use to pass extra stuff.
+            # but you can pass all the same stuff in any of these sets and access it in lua
+            nixdExtras = {
+              nixpkgs = ''import ${pkgs.path} {}'';
+              # or inherit nixpkgs;
+            };
+          };
         };
       };
     };
