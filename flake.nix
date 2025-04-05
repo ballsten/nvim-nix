@@ -130,11 +130,11 @@
       optionalPlugins = {
         # gitPlugins = with pkgs.neovimPlugins; [ ];
         general = with pkgs.vimPlugins; [
-          "nvim-lspconfig"
+          nvim-lspconfig
         ];
 
         nixdev = with pkgs.vimPlugins; [
-          "lazydev-nvim"
+          lazydev-nvim
         ];
       };
 
