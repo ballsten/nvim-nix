@@ -1,28 +1,32 @@
--- Themeing
-local colorschemeName = nixCats('colorscheme')
-if not require('nixCatsUtils').isNixCats then
-  colorschemeName = 'onedark'
-end
--- Could I lazy load on colorscheme with lze?
--- sure. But I was going to call vim.cmd.colorscheme() during startup anyway
--- this is just an example, feel free to do a better job!
-vim.cmd.colorscheme(colorschemeName)
+--[[
 
--- load snacks early in the piece
+This is the main configuration script
+
+]]--
+
+-- Load Snacks early
 require("lze").load({
   "snacks.nvim",
   for_cat = 'essential.ui',
   lazy = false,
   after = function(_)
-    local notify = vim.notify
+    -- local notify = vim.notify
     require('snacks').setup({})
     -- TODO: need this hack for NOICE
     -- vim.notify = notify
   end,
 })
 
+-- load theme configuration
+if nixCats("themer") then
+  require("plugins.colorscheme")
+end
 
+--------------------------------------------------------
 -- TODO: everything below here is boilerplate
+-- Need to review all and remove or push above this line
+--------------------------------------------------------
+
 local ok, notify = pcall(require, "notify")
 if ok then
   notify.setup({
