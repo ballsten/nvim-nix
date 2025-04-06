@@ -22,11 +22,14 @@ if nixCats("themer") then
   require("plugins.colorscheme")
 end
 
+-- load plugins
+-- require('lze').load("plugins.ui")
+
 --------------------------------------------------------
 -- TODO: everything below here is boilerplate
 -- Need to review all and remove or push above this line
 --------------------------------------------------------
-
+--[[
 local ok, notify = pcall(require, "notify")
 if ok then
   notify.setup({
@@ -39,54 +42,13 @@ if ok then
       notify.dismiss({ silent = true, })
   end, { desc = "dismiss notify popup and clear hlsearch" })
 end
-
--- NOTE: you can check if you included the category with the thing wherever you want.
-if nixCats('general.extra') then
-  -- I didnt want to bother with lazy loading this.
-  -- I could put it in opt and put it in a spec anyway
-  -- and then not set any handlers and it would load at startup,
-  -- but why... I guess I could make it load
-  -- after the other lze definitions in the next call using priority value?
-  -- didnt seem necessary.
-  vim.g.loaded_netrwPlugin = 1
-  require("oil").setup({
-    default_file_explorer = true,
-    view_options = {
-      show_hidden = true
-    },
-    columns = {
-      "icon",
-      "permissions",
-      "size",
-      -- "mtime",
-    },
-    keymaps = {
-      ["g?"] = "actions.show_help",
-      ["<CR>"] = "actions.select",
-      ["<C-s>"] = "actions.select_vsplit",
-      ["<C-h>"] = "actions.select_split",
-      ["<C-t>"] = "actions.select_tab",
-      ["<C-p>"] = "actions.preview",
-      ["<C-c>"] = "actions.close",
-      ["<C-l>"] = "actions.refresh",
-      ["-"] = "actions.parent",
-      ["_"] = "actions.open_cwd",
-      ["`"] = "actions.cd",
-      ["~"] = "actions.tcd",
-      ["gs"] = "actions.change_sort",
-      ["gx"] = "actions.open_external",
-      ["g."] = "actions.toggle_hidden",
-      ["g\\"] = "actions.toggle_trash",
-    },
-  })
-  vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, desc = 'Open Parent Directory' })
-  vim.keymap.set("n", "<leader>-", "<cmd>Oil .<CR>", { noremap = true, desc = 'Open nvim root directory' })
-end
+]]--
 
 require('lze').load {
   { import = "plugins.telescope", },
   { import = "plugins.treesitter", },
   { import = "plugins.completion", },
+--[[
   {
     "markdown-preview.nvim",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,
@@ -106,6 +68,8 @@ require('lze').load {
       vim.g.mkdp_auto_close = 0
     end,
   },
+  ]]--
+  --[[
   {
     "undotree",
     for_cat = 'general.extra',
@@ -116,6 +80,8 @@ require('lze').load {
       vim.g.undotree_SplitWidth = 40
     end,
   },
+  ]]--
+  --[[
   {
     "comment.nvim",
     for_cat = 'general.extra',
@@ -124,6 +90,8 @@ require('lze').load {
       require('Comment').setup()
     end,
   },
+  ]]--
+  --[[
   {
     "indent-blankline.nvim",
     for_cat = 'general.extra',
@@ -132,6 +100,8 @@ require('lze').load {
       require("ibl").setup()
     end,
   },
+  ]]--
+  --[[
   {
     "nvim-surround",
     for_cat = 'general.always',
@@ -141,6 +111,8 @@ require('lze').load {
       require('nvim-surround').setup()
     end,
   },
+  ]]--
+  --[[
   {
     "vim-startuptime",
     for_cat = 'general.extra',
@@ -151,6 +123,8 @@ require('lze').load {
       vim.g.startuptime_exe_path = nixCats.packageBinPath
     end,
   },
+  ]]--
+  --[[
   {
     "fidget.nvim",
     for_cat = 'general.extra',
@@ -160,20 +134,8 @@ require('lze').load {
       require('fidget').setup({})
     end,
   },
-  -- {
-  --   "hlargs",
-  --   for_cat = 'general.extra',
-  --   event = "DeferredUIEnter",
-  --   -- keys = "",
-  --   dep_of = { "nvim-lspconfig" },
-  --   after = function(plugin)
-  --     require('hlargs').setup {
-  --       color = '#32a88f',
-  --     }
-  --     vim.cmd([[hi clear @lsp.type.parameter]])
-  --     vim.cmd([[hi link @lsp.type.parameter Hlargs]])
-  --   end,
-  -- },
+  ]]--
+  --[[
   {
     "lualine.nvim",
     for_cat = 'general.always',
@@ -215,6 +177,8 @@ require('lze').load {
       })
     end,
   },
+  ]]--
+  --[[
   {
     "gitsigns.nvim",
     for_cat = 'general.always',
@@ -294,11 +258,15 @@ require('lze').load {
           map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
         end,
       })
-      vim.cmd([[hi GitSignsAdd guifg=#04de21]])
-      vim.cmd([[hi GitSignsChange guifg=#83fce6]])
-      vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
+      ]]--
+      -- vim.cmd([[hi GitSignsAdd guifg=#04de21]])
+      -- vim.cmd([[hi GitSignsChange guifg=#83fce6]])
+      -- vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
+      --[[
     end,
   },
+  ]]--
+  --[[
   {
     "which-key.nvim",
     for_cat = 'general.extra',
@@ -332,4 +300,5 @@ require('lze').load {
       }
     end,
   },
+]]--
 }
