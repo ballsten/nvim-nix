@@ -23,7 +23,9 @@ if nixCats("themer") then
 end
 
 -- load plugins
-require('lze').load("plugins.ui")
+require('lze').load({
+  { import = "plugins.bufferline" },
+})
 
 --------------------------------------------------------
 -- TODO: everything below here is boilerplate
