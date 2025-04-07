@@ -1,6 +1,6 @@
 --[[
 
-This is the main configuration script
+This is the main configuration script for plugins
 
 ]]--
 
@@ -23,13 +23,12 @@ if nixCats("themer") then
 end
 
 -- load plugins
--- require('lze').load("plugins.ui")
+require('lze').load("plugins.ui")
 
 --------------------------------------------------------
 -- TODO: everything below here is boilerplate
 -- Need to review all and remove or push above this line
 --------------------------------------------------------
---[[
 local ok, notify = pcall(require, "notify")
 if ok then
   notify.setup({
@@ -42,13 +41,11 @@ if ok then
       notify.dismiss({ silent = true, })
   end, { desc = "dismiss notify popup and clear hlsearch" })
 end
-]]--
 
 require('lze').load {
   { import = "plugins.telescope", },
   { import = "plugins.treesitter", },
   { import = "plugins.completion", },
---[[
   {
     "markdown-preview.nvim",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,
@@ -68,8 +65,6 @@ require('lze').load {
       vim.g.mkdp_auto_close = 0
     end,
   },
-  ]]--
-  --[[
   {
     "undotree",
     for_cat = 'general.extra',
@@ -80,8 +75,6 @@ require('lze').load {
       vim.g.undotree_SplitWidth = 40
     end,
   },
-  ]]--
-  --[[
   {
     "comment.nvim",
     for_cat = 'general.extra',
@@ -90,8 +83,6 @@ require('lze').load {
       require('Comment').setup()
     end,
   },
-  ]]--
-  --[[
   {
     "indent-blankline.nvim",
     for_cat = 'general.extra',
@@ -100,8 +91,6 @@ require('lze').load {
       require("ibl").setup()
     end,
   },
-  ]]--
-  --[[
   {
     "nvim-surround",
     for_cat = 'general.always',
@@ -111,8 +100,6 @@ require('lze').load {
       require('nvim-surround').setup()
     end,
   },
-  ]]--
-  --[[
   {
     "vim-startuptime",
     for_cat = 'general.extra',
@@ -123,8 +110,6 @@ require('lze').load {
       vim.g.startuptime_exe_path = nixCats.packageBinPath
     end,
   },
-  ]]--
-  --[[
   {
     "fidget.nvim",
     for_cat = 'general.extra',
@@ -134,7 +119,6 @@ require('lze').load {
       require('fidget').setup({})
     end,
   },
-  ]]--
   --[[
   {
     "lualine.nvim",
@@ -177,7 +161,6 @@ require('lze').load {
       })
     end,
   },
-  ]]--
   --[[
   {
     "gitsigns.nvim",

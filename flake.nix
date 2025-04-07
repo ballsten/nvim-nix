@@ -181,6 +181,7 @@
         essential = with pkgs.vimPlugins; {
           ui = [
             snacks-nvim
+            bufferline-nvim
           ];
         };
 
