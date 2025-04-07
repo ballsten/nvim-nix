@@ -3,7 +3,6 @@ return {
     "bufferline.nvim",
     for_cat = 'essential.ui',
     event = "BufEnter",
-    --[[
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
@@ -16,7 +15,6 @@ return {
       { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
       { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
-    ]]--
     after = function()
       vim.opt.termguicolors = true
       require("bufferline").setup({
