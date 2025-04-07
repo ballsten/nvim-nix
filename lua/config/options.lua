@@ -1,11 +1,11 @@
---
+-- Set Leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+
+
 --[[ LazyVim code below ]]--
 -- TODO: tidy up or remove
---
---
--- -- This file is automatically loaded by plugins.core
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = "\\"
 --
 -- -- LazyVim auto format
 -- vim.g.autoformat = true
