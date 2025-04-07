@@ -4,18 +4,6 @@ This is the main configuration script for plugins
 
 ]]--
 
--- Load Snacks early
-require("lze").load({
-  "snacks.nvim",
-  for_cat = 'essential.ui',
-  lazy = false,
-  after = function(_)
-    -- local notify = vim.notify
-    require('snacks').setup({})
-    -- TODO: need this hack for NOICE
-    -- vim.notify = notify
-  end,
-})
 
 -- load theme configuration
 if nixCats("themer") then
@@ -24,6 +12,7 @@ end
 
 -- load plugins
 require('lze').load({
+  { import = "plugins.snacks" },
   { import = "plugins.bufferline" },
 })
 
