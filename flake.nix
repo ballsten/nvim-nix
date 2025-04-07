@@ -18,7 +18,7 @@
 # each section is tagged with its relevant help section.
 
 {
-  description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
+  description = "Ballsten's Neovim config via nixCats";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -123,7 +123,6 @@
       # at RUN TIME for plugins. Will be available to path within neovim terminal
       environmentVariables = {
         test = {
-          CATTESTVAR = "It worked!";
         };
       };
 
@@ -132,7 +131,6 @@
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh
       extraWrapperArgs = {
         test = [
-          '' --set CATTESTVAR2 "It worked again!"''
         ];
       };
 
@@ -172,7 +170,7 @@
           wrapRc = true;
           # IMPORTANT:
           # your alias may not conflict with your other packages.
-          aliases = [ "vim" ];
+          aliases = [ ];
           # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
         };
         # and a set of categories that you want
@@ -232,32 +230,32 @@
 
   }) // (let
     # we also export a nixos module to allow reconfiguration from configuration.nix
-    nixosModule = utils.mkNixosModules {
-      moduleNamespace = [ defaultPackageName ];
-      inherit defaultPackageName dependencyOverlays luaPath
-        categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-    };
+    # nixosModule = utils.mkNixosModules {
+    #   moduleNamespace = [ defaultPackageName ];
+    #   inherit defaultPackageName dependencyOverlays luaPath
+    #     categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
+    # };
     # and the same for home manager
-    homeModule = utils.mkHomeModules {
-      moduleNamespace = [ defaultPackageName ];
-      inherit defaultPackageName dependencyOverlays luaPath
-        categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-    };
+    # homeModule = utils.mkHomeModules {
+    #   moduleNamespace = [ defaultPackageName ];
+    #   inherit defaultPackageName dependencyOverlays luaPath
+    #     categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
+    # };
   in {
 
     # these outputs will be NOT wrapped with ${system}
 
     # this will make an overlay out of each of the packageDefinitions defined above
     # and set the default overlay to the one named here.
-    overlays = utils.makeOverlays luaPath {
-      inherit nixpkgs dependencyOverlays extra_pkg_config;
-    } categoryDefinitions packageDefinitions defaultPackageName;
-
-    nixosModules.default = nixosModule;
-    homeModules.default = homeModule;
-
-    inherit utils nixosModule homeModule;
-    inherit (utils) templates;
+    # overlays = utils.makeOverlays luaPath {
+    #   inherit nixpkgs dependencyOverlays extra_pkg_config;
+    # } categoryDefinitions packageDefinitions defaultPackageName;
+    #
+    # nixosModules.default = nixosModule;
+    # homeModules.default = homeModule;
+    #
+    # inherit utils nixosModule homeModule;
+    # inherit (utils) templates;
   });
 
 }
