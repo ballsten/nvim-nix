@@ -110,8 +110,13 @@
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
         general = with pkgs.vimPlugins; [ ];
+
+        # colorscheme packages go here
+        # "colorscheme" default should be set in packageDefinition
+        themes = with pkgs.vimPlugins; [
+          cyberdream-nvim
+        ];
       };
 
       # shared libraries to be added to LD_LIBRARY_PATH
@@ -181,6 +186,9 @@
         # (and other information to pass to lua)
         categories = {
           core = true;
+          
+          themes = true;
+          colorscheme = "cyberdream";
         };
       };
     };
