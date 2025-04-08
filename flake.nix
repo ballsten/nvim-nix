@@ -99,7 +99,11 @@
 
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
+        core = with pkgs.vimPlugins; [
+          lze
+          lzextras
+        ];
+
         general = with pkgs.vimPlugins; [ ];
       };
 
@@ -176,19 +180,7 @@
         # and a set of categories that you want
         # (and other information to pass to lua)
         categories = {
-          general = true;
-          gitPlugins = true;
-          customPlugins = true;
-          test = true;
-          example = {
-            youCan = "add more than just booleans";
-            toThisSet = [
-              "and the contents of this categories set"
-              "will be accessible to your lua with"
-              "nixCats('path.to.value')"
-              "see :help nixCats"
-            ];
-          };
+          core = true;
         };
       };
     };
