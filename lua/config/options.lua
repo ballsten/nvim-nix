@@ -27,6 +27,14 @@ opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
+opt.jumpoptions = "view"
+opt.laststatus = 3 -- global statusline
+opt.linebreak = true -- Wrap lines at convenient points
+opt.list = true -- Show some invisible characters (tabs...
+opt.mouse = "a" -- Enable mouse mode
+opt.number = true -- Print line number
+opt.pumblend = 10 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
 
 --[[ LazyVim code below ]]--
 -- TODO: tidy up or remove
@@ -80,14 +88,6 @@ opt.inccommand = "nosplit" -- preview incremental substitute
 --
 -- opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 --
--- opt.jumpoptions = "view"
--- opt.laststatus = 3 -- global statusline
--- opt.linebreak = true -- Wrap lines at convenient points
--- opt.list = true -- Show some invisible characters (tabs...
--- opt.mouse = "a" -- Enable mouse mode
--- opt.number = true -- Print line number
--- opt.pumblend = 10 -- Popup blend
--- opt.pumheight = 10 -- Maximum number of entries in a popup
 -- opt.relativenumber = true -- Relative line numbers
 -- opt.ruler = false -- Disable the default ruler
 -- opt.scrolloff = 4 -- Lines of context
