@@ -2,6 +2,7 @@ require("lze").register_handlers(require('utils.lzUtils').for_cat)
 
 require("lze").load({
   { import = "plugins.colorscheme" },
+  { import = "plugins.treesitter" },
 })
 
 -- set the default colorscheme

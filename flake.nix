@@ -20,6 +20,7 @@
 {
   description = "Ballsten's Neovim config via nixCats";
 
+  # see :help nixCats.flake.inputs
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
@@ -27,17 +28,6 @@
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
-
-    # see :help nixCats.flake.inputs
-    # If you want your plugin to be loaded by the standard overlay,
-    # i.e. if it wasnt on nixpkgs, but doesnt have an extra build step.
-    # Then you should name it "plugins-something"
-    # If you wish to define a custom build step not handled by nixpkgs,
-    # then you should name it in a different format, and deal with that in the
-    # overlay defined for custom builds in the overlays directory.
-    # for specific tags, branches and commits, see:
-    # https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html#examples
-
   };
 
   # see :help nixCats.flake.outputs
@@ -93,7 +83,8 @@
       # at RUN TIME for plugins. Will be available to PATH within neovim terminal
       # this includes LSPs
       lspsAndRuntimeDeps = {
-        general = with pkgs; [
+        core = with pkgs; [
+          ripgrep
         ];
       };
 
@@ -110,7 +101,12 @@
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = {
-        general = with pkgs.vimPlugins; [ ];
+          code = {
+            treesitter = with pkgs.vimPlugins; [
+            nvim-treesitter-textobjects
+            nvim-treesitter.withAllGrammars
+          ];
+        };
 
         # colorscheme packages go here
         # "colorscheme" default should be set in packageDefinition
@@ -186,7 +182,8 @@
         # (and other information to pass to lua)
         categories = {
           core = true;
-          
+          code = true;
+
           themes = true;
           colorscheme = "cyberdream";
         };
