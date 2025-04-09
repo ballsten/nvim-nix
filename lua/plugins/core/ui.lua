@@ -58,7 +58,17 @@ return {
     lazy = false,
     cmd = { "Snacks" },
     after = function(_)
-      require('snacks').setup({})
+      require('snacks').setup({
+        indent = { enabled = true },
+        input = { enabled = true },
+        notifier = { enabled = true },
+        scope = { enabled = true },
+        scroll = { enabled = true },
+        statuscolumn = { enabled = false },
+        toggle = {},
+        words = { enabled = true },
+        -- TODO: dashboard
+      })
     end,
   }
 
