@@ -109,6 +109,12 @@
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = with pkgs.vimPlugins; {
+        core = {
+          default = [
+            lualine-nvim
+          ];
+        };
+
         code = {
           default = [
             nvim-treesitter-textobjects
@@ -120,6 +126,14 @@
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 lua
+              ]
+            ))
+          ];
+
+          nix = [
+            (nvim-treesitter.withPlugins (
+              plugins: with plugins; [
+                nix
               ]
             ))
           ];
@@ -175,6 +189,9 @@
       extraCats = {
         code = [
           [ "code" "default" ]
+        ];
+        core = [
+          [ "core" "default" ]
         ];
       };
     };
