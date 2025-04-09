@@ -68,6 +68,10 @@ return {
     lazy = false,
     cmd = { "Snacks" },
     keys = {
+      -- explorer
+      { "<leader>fe", function() Snacks.explorer() end, desc = "Explorer Snacks (cwd)" },
+      { "<leader>e", "<leader>fe", desc = "Explorer Snacks (cwd)", remap = true },
+      -- scratch
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
       { "<leader>dps", function() Snacks.profiler.scratch() end, desc = "Profiler Scratch Buffer" },
@@ -75,6 +79,7 @@ return {
     after = function(_)
       require('snacks').setup({
         bigfile = { enabled = true },
+        explorer = {},
         indent = { enabled = true },
         input = { enabled = true },
         notifier = { enabled = true },
