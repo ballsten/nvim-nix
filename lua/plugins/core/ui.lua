@@ -71,6 +71,7 @@ return {
       -- explorer
       { "<leader>fe", function() Snacks.explorer() end, desc = "Explorer Snacks (cwd)" },
       { "<leader>e", "<leader>fe", desc = "Explorer Snacks (cwd)", remap = true },
+      -- lazygit: keymaps are in config/keymaps
       -- scratch
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
@@ -82,6 +83,7 @@ return {
         explorer = {},
         indent = { enabled = true },
         input = { enabled = true },
+        lazygit = {},
         notifier = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
