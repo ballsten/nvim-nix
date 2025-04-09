@@ -87,9 +87,13 @@
           ripgrep
         ];
 
-        code = {
-          lua = with pkgs; [
+        code = with pkgs; {
+          lua = [
             lua-language-server
+          ];
+
+          nix = [
+            nixd
           ];
         };
       };
@@ -206,6 +210,12 @@
 
           themes = true;
           colorscheme = "cyberdream";
+        };
+        extra = {
+          nixdExtras = {
+            nixpkgs = ''import ${pkgs.path} {}'';
+            nixos_options = ''(builtins.getFlake "path:${builtins.toString inputs.self.outPath}").nixosConfigurations.configname.options'';
+          };
         };
       };
     };

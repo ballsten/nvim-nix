@@ -4,6 +4,7 @@ return {
     for_cat = "core.default",
     on_require = { "lspconfig" },
     lsp = function(plugin)
+      print("Loading LSP: " .. plugin.name)
       require('lspconfig')[plugin.name].setup(vim.tbl_extend("force",{
         capabilities = require('plugins.lsp.utils').get_capabilities(plugin.name),
         on_attach = require('plugins.lsp.utils').on_attach,
@@ -12,7 +13,7 @@ return {
   },
   {
     "lua_ls",
-    for_cat = "core.lua",
+    for_cat = "code.lua",
     lsp = {
       filetypes = { 'lua' },
       settings = {
@@ -43,7 +44,7 @@ return {
   },
   {
     "lazydev.nvim",
-    for_cat = "core.lua",
+    for_cat = "code.lua",
     ft = "lua",
     cmd = { "LazyDev" },
     after = function(_)
@@ -53,5 +54,32 @@ return {
         },
       })
     end,
+  },
+  {
+    "nixd",
+    for_cat = "code.nix",
+    lsp = {
+      filetypes = { "nix" },
+      settings = {
+        nixd = {
+          nixpkgs = {
+            expr = nixCats.extra("nixdExtras.nixpkgs") or [[import <nixpkgs> {}]],
+          },
+          options = {
+            nixos = {
+              expr = nixCats.extra("nixdExtras.nixos_options")
+            },
+          },
+        },
+        formatting = {
+          command = { "nixfmt" },
+        },
+        diagnostic = {
+          suppress = {
+            "sema-escaping-with"
+          },
+        },
+      },
+    },
   },
 }
