@@ -3,12 +3,12 @@ return {
     "lualine.nvim",
     for_cat = "core.default",
     event = "DeferredUIEnter",
-    -- TODO: revist after Snacks is configured
+    -- TODO: revist after Snacks is configured, check out LazyVIM
     after = function(plugin)
       require('lualine').setup({
         options = {
           icons_enabled = false,
-          theme = colorschemeName,
+          theme = nixCats('colorscheme'),
           component_separators = '|',
           section_separators = '',
         },
@@ -27,12 +27,7 @@ return {
           },
           lualine_x = {'filetype'},
         },
-        tabline = {
-          lualine_a = { 'buffers' },
-          -- if you use lualine-lsp-progress, I have mine here instead of fidget
-          -- lualine_b = { 'lsp_progress', },
-          lualine_z = { 'tabs' }
-        },
+        tabline = {},
       })
     end,
   },

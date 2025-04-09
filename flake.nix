@@ -112,6 +112,7 @@
         core = {
           default = [
             lualine-nvim
+            bufferline-nvim
           ];
         };
 
