@@ -86,6 +86,12 @@
         core = with pkgs; [
           ripgrep
         ];
+
+        code = {
+          lua = with pkgs; [
+            lua-language-server
+          ];
+        };
       };
 
       # This is for plugins that will load at startup without using packadd:
@@ -94,17 +100,24 @@
           lze
           lzextras
         ];
-
-        general = with pkgs.vimPlugins; [ ];
       };
 
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
-      optionalPlugins = {
-          code = {
-            treesitter = with pkgs.vimPlugins; [
+      optionalPlugins = with pkgs.vimPlugins; {
+        code = {
+          default = [
             nvim-treesitter-textobjects
-            nvim-treesitter.withAllGrammars
+            nvim-lspconfig
+          ];
+
+          lua = [
+            lazydev-nvim
+            (nvim-treesitter.withPlugins (
+              plugins: with plugins; [
+                lua
+              ]
+            ))
           ];
         };
 
@@ -152,6 +165,13 @@
       # populates $LUA_PATH and $LUA_CPATH
       extraLuaPackages = {
         test = [ (_:[]) ];
+      };
+
+      # enable defaults
+      extraCats = {
+        code = [
+          [ "code" "default" ]
+        ];
       };
     };
 
