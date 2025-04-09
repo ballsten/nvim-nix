@@ -123,6 +123,14 @@
               ]
             ))
           ];
+
+          nix = [
+            (nvim-treesitter.withPlugins (
+              plugins: with plugins; [
+                nix
+              ]
+            ))
+          ];
         };
 
         # colorscheme packages go here
