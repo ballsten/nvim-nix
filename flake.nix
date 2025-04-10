@@ -123,6 +123,10 @@
             which-key-nvim
             gitsigns-nvim
           ];
+
+          editor = [
+            flash-nvim
+          ];
         };
 
         code = {
