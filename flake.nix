@@ -86,6 +86,7 @@
         core = with pkgs; {
           default = [
             ripgrep
+            fd
           ];
           ui = [
             imagemagick_light
@@ -128,6 +129,11 @@
           default = [
             nvim-treesitter-textobjects
             nvim-lspconfig
+          ];
+          
+          completion = [
+            blink-cmp
+            friendly-snippets
           ];
 
           lua = [

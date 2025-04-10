@@ -4,6 +4,7 @@ require('lze').register_handlers(require('lzextras').lsp)
 require("lze").load({
   { import = "plugins.colorscheme" },
   { import = "plugins.core.ui" },
+  { import = "plugins.code.completion" },
   { import = "plugins.treesitter" },
   { import = "plugins.lsp" },
 })
