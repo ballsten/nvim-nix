@@ -119,6 +119,7 @@
             lualine-nvim
             bufferline-nvim
             snacks-nvim
+            which-key-nvim
           ];
         };
 
