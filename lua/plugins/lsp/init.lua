@@ -51,6 +51,7 @@ return {
       require('lazydev').setup({
         library = {
           { words = { "nixCats" }, path = (nixCats.nixCatsPath or "") .. '/lua' },
+          { words = { "Snacks" }, path = "snacks.nvim" },
         },
       })
     end,

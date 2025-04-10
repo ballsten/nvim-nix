@@ -83,9 +83,14 @@
       # at RUN TIME for plugins. Will be available to PATH within neovim terminal
       # this includes LSPs
       lspsAndRuntimeDeps = {
-        core = with pkgs; [
-          ripgrep
-        ];
+        core = with pkgs; {
+          default = [
+            ripgrep
+          ];
+          ui = [
+            imagemagick_light
+          ];
+        };
 
         code = with pkgs; {
           lua = [
@@ -110,9 +115,11 @@
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = with pkgs.vimPlugins; {
         core = {
-          default = [
+          ui = [
             lualine-nvim
             bufferline-nvim
+            snacks-nvim
+            which-key-nvim
           ];
         };
 
