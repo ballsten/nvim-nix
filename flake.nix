@@ -120,6 +120,7 @@
             bufferline-nvim
             snacks-nvim
             which-key-nvim
+            gitsigns-nvim
           ];
         };
 
