@@ -4,7 +4,6 @@ return {
     for_cat = "core.default",
     on_require = { "lspconfig" },
     lsp = function(plugin)
-      print("Loading LSP: " .. plugin.name)
       require('lspconfig')[plugin.name].setup(vim.tbl_extend("force",{
         capabilities = require('plugins.lsp.utils').get_capabilities(plugin.name),
         on_attach = require('plugins.lsp.utils').on_attach,

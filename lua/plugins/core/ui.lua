@@ -196,7 +196,42 @@ return {
     },
     after = function(_)
       -- TODO: revisit after snacks
-      require('bufferline').setup({})
+      require('bufferline').setup({
+        options = {
+          -- stylua: ignore
+          close_command = function(n) Snacks.bufdelete(n) end,
+          -- stylua: ignore
+          right_mouse_command = function(n) Snacks.bufdelete(n) end,
+          diagnostics = "nvim_lsp",
+          always_show_bufferline = false,
+          diagnostics_indicator = function(_, _, diag)
+            local icons = {
+              Error = " ",
+              Warn  = " ",
+              Hint  = " ",
+              Info  = " ",
+            }
+            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+              .. (diag.warning and icons.Warn .. diag.warning or "")
+            return vim.trim(ret)
+          end,
+          offsets = {
+            {
+              filetype = "neo-tree",
+              text = "Neo-tree",
+              highlight = "Directory",
+              text_align = "left",
+            },
+            {
+              filetype = "snacks_layout_box",
+            },
+          },
+          get_element_icon = function(element)
+            local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
+            return icon, hl
+          end,
+        },
+      })
     end,
   },
   {
@@ -405,6 +440,11 @@ return {
         end,
       })
     end
+  },
+  {
+    "nvim-web-devicons",
+    for_cat = "core.ui",
+    on_require = "nvim-web-devicons",
   }
 }
 
