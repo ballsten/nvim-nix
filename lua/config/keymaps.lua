@@ -33,12 +33,8 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
--- map("n", "<leader>bd", function()
---   Snacks.bufdelete()
--- end, { desc = "Delete Buffer" })
--- map("n", "<leader>bo", function()
---   Snacks.bufdelete.other()
--- end, { desc = "Delete Other Buffers" })
+map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
+map("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Delete Other Buffers" })
 map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 --
 -- Clear search, diff update and redraw
@@ -122,30 +118,25 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
--- -- windows
--- map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
--- map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
--- map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
---[[ LazyVim code below ]]--
--- TODO: tidy up or remove
---
--- -- Clear search and stop snippet on escape
--- map({ "i", "n", "s" }, "<esc>", function()
---   vim.cmd("noh")
---   LazyVim.cmp.actions.snippet_stop()
---   return "<esc>"
--- end, { expr = true, desc = "Escape and Clear hlsearch" })
---
--- -- formatting
--- map({ "n", "v" }, "<leader>cf", function()
---   LazyVim.format({ force = true })
--- end, { desc = "Format" })
---
--- -- stylua: ignore start
---
--- -- toggle options
--- LazyVim.format.snacks_toggle():map("<leader>uf")
--- LazyVim.format.snacks_toggle(true):map("<leader>uF")
+-- windows
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+-- lazygit
+if vim.fn.executable("lazygit") == 1 then
+  map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
+  map("n", "<leader>gf", function() Snacks.picker.git_log_file() end, { desc = "Git Current File History" })
+  map("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log (cwd)" })
+end
+
+-- git
+map("n", "<leader>gb", function() Snacks.picker.git_log_line() end, { desc = "Git Blame Line" })
+map({ "n", "x" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse (open)" })
+map({"n", "x" }, "<leader>gY", function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false }) end, { desc = "Git Browse (copy)" })
+
+-- toggle options
+-- TODO: I think I need to move these to Snacks Keymaps
 -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 -- Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 -- Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
@@ -161,52 +152,46 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 -- Snacks.toggle.scroll():map("<leader>uS")
 -- Snacks.toggle.profiler():map("<leader>dpp")
 -- Snacks.toggle.profiler_highlights():map("<leader>dph")
---
 -- if vim.lsp.inlay_hint then
 --   Snacks.toggle.inlay_hints():map("<leader>uh")
 -- end
---
-if vim.fn.executable("lazygit") == 1 then
-  map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
-  map("n", "<leader>gf", function() Snacks.picker.git_log_file() end, { desc = "Git Current File History" })
-  map("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log (cwd)" })
-end
---
--- map("n", "<leader>gb", function() Snacks.picker.git_log_line() end, { desc = "Git Blame Line" })
--- map({ "n", "x" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse (open)" })
--- map({"n", "x" }, "<leader>gY", function()
---   Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })
--- end, { desc = "Git Browse (copy)" })
---
---
--- -- highlights under cursor
--- map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
--- map("n", "<leader>uI", function() vim.treesitter.inspect_tree() vim.api.nvim_input("I") end, { desc = "Inspect Tree" })
---
--- -- floating terminal
--- map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
--- map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
--- map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
--- map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
---
+
+-- highlights under cursor
+map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+map("n", "<leader>uI", function() vim.treesitter.inspect_tree() vim.api.nvim_input("I") end, { desc = "Inspect Tree" })
+
+-- floating terminal
+map("n", "<leader>ft", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
+
+-- TODO: I think I need to move these to Snacks Keymaps
 -- Snacks.toggle.zoom():map("<leader>wm"):map("<leader>uZ")
 -- Snacks.toggle.zen():map("<leader>uz")
+
+-- tabs
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- TODO: do I need these?
+-- LazyVim.format.snacks_toggle():map("<leader>uf")
+-- LazyVim.format.snacks_toggle(true):map("<leader>uF")
+
+--[[ LazyVim code below ]]--
+-- TODO: tidy up or remove
 --
--- -- tabs
--- map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
--- map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
--- map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
--- map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
--- map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
--- map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
--- map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+-- -- Clear search and stop snippet on escape
+-- map({ "i", "n", "s" }, "<esc>", function()
+--   vim.cmd("noh")
+--   LazyVim.cmp.actions.snippet_stop()
+--   return "<esc>"
+-- end, { expr = true, desc = "Escape and Clear hlsearch" })
 --
--- -- native snippets. only needed on < 0.11, as 0.11 creates these by default
--- if vim.fn.has("nvim-0.11") == 0 then
---   map("s", "<Tab>", function()
---     return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
---   end, { expr = true, desc = "Jump Next" })
---   map({ "i", "s" }, "<S-Tab>", function()
---     return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
---   end, { expr = true, desc = "Jump Previous" })
--- end
+-- -- formatting
+-- map({ "n", "v" }, "<leader>cf", function()
+--   LazyVim.format({ force = true })
+-- end, { desc = "Format" })
+--

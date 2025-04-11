@@ -90,6 +90,7 @@
           ];
           ui = [
             imagemagick_light
+            krabby
           ];
         };
 
@@ -122,6 +123,7 @@
             snacks-nvim
             which-key-nvim
             gitsigns-nvim
+            nvim-web-devicons
           ];
 
           editor = [

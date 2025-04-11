@@ -1,5 +1,5 @@
 -- load configuration
 require('config')
 
--- load plugins down here
+-- load plugins
 require('plugins')
