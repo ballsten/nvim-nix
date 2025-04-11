@@ -100,7 +100,6 @@ return {
     "lualine.nvim",
     for_cat = "core.ui",
     event = "DeferredUIEnter",
-    -- TODO: revist after Snacks is configured, check out LazyVIM
     after = function(_)
       require('lualine').setup({
         options = {
