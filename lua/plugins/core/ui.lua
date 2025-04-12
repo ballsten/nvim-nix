@@ -313,9 +313,9 @@ return {
           sections = {
             {
               section = "terminal",
-              cmd = "krabby name rhydon --no-title; sleep .1",
+              cmd = "krabby name golurk --no-title; sleep .8",
               height = 25,
-              indent = 10,
+              indent = 15,
             },
             {
               section = "keys"
