@@ -11,12 +11,15 @@
       let pkgs = nixpkgs.legacyPackages.${system}; in 
       {
         packages = rec {
-          neovim = pkgs.neovim-unwrapped;
+          neovim = pkgs.callPackage ./neovim.nix {};
           default = neovim;
         };
 
-        app = rec {
-          neovim = flake-utils.lib.mkApp { drv = self.packages.${system}.neovim; };
+        apps = rec {
+          neovim = flake-utils.lib.mkApp { 
+            drv = self.packages.${system}.neovim;
+            name = "nvim";
+          };
           default = neovim;
         };
       });
