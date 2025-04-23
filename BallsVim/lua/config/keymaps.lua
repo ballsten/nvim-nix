@@ -1,3 +1,4 @@
+-- this is basic keymap configuration that has no dependency on plugins
 local map = vim.keymap.set
 
 -- -- better up/down
@@ -130,42 +131,9 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log (cwd)" })
 end
 
--- git
-map("n", "<leader>gb", function() Snacks.picker.git_log_line() end, { desc = "Git Blame Line" })
-map({ "n", "x" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse (open)" })
-map({"n", "x" }, "<leader>gY", function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false }) end, { desc = "Git Browse (copy)" })
-
--- toggle options
--- TODO: I think I need to move these to Snacks Keymaps
--- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
--- Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
--- Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
--- Snacks.toggle.diagnostics():map("<leader>ud")
--- Snacks.toggle.line_number():map("<leader>ul")
--- Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }):map("<leader>uc")
--- Snacks.toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map("<leader>uA")
--- Snacks.toggle.treesitter():map("<leader>uT")
--- Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background" }):map("<leader>ub")
--- Snacks.toggle.dim():map("<leader>uD")
--- Snacks.toggle.animate():map("<leader>ua")
--- Snacks.toggle.indent():map("<leader>ug")
--- Snacks.toggle.scroll():map("<leader>uS")
--- Snacks.toggle.profiler():map("<leader>dpp")
--- Snacks.toggle.profiler_highlights():map("<leader>dph")
--- if vim.lsp.inlay_hint then
---   Snacks.toggle.inlay_hints():map("<leader>uh")
--- end
-
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", function() vim.treesitter.inspect_tree() vim.api.nvim_input("I") end, { desc = "Inspect Tree" })
-
--- floating terminal
-map("n", "<leader>ft", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
-
--- TODO: I think I need to move these to Snacks Keymaps
--- Snacks.toggle.zoom():map("<leader>wm"):map("<leader>uZ")
--- Snacks.toggle.zen():map("<leader>uz")
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -175,23 +143,3 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
--- TODO: do I need these?
--- LazyVim.format.snacks_toggle():map("<leader>uf")
--- LazyVim.format.snacks_toggle(true):map("<leader>uF")
-
---[[ LazyVim code below ]]--
--- TODO: tidy up or remove
---
--- -- Clear search and stop snippet on escape
--- map({ "i", "n", "s" }, "<esc>", function()
---   vim.cmd("noh")
---   LazyVim.cmp.actions.snippet_stop()
---   return "<esc>"
--- end, { expr = true, desc = "Escape and Clear hlsearch" })
---
--- -- formatting
--- map({ "n", "v" }, "<leader>cf", function()
---   LazyVim.format({ force = true })
--- end, { desc = "Format" })
---
