@@ -1,9 +1,12 @@
+-- load configuration
+require("config")
+
 -- load plugin specs
 require('lze').register_handlers(require('lzextras').lsp)
 require("lze").load("specs")
 
--- load configuration
-require("config")
+-- set default colorscheme
+vim.cmd.colorscheme("catppuccin-mocha")
 
 -- load plugins
 -- require("plugins")

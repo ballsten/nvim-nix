@@ -2,9 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- set default colorscheme
-vim.cmd.colorscheme("catppuccin-mocha")
-
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write

@@ -34,6 +34,7 @@
     catppuccin-nvim
     lazydev-nvim
     which-key-nvim
+    snacks-nvim
   ];
 
   # function to resolve all dependencies
