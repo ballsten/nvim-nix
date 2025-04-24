@@ -17,13 +17,15 @@
   ];
 
   optPlugins = with vimPlugins; [
-    catppuccin-nvim
+    # treesitter grammars
     (nvim-treesitter.withPlugins (
       plugins: with plugins; [
         lua
         nix
       ]
     ))
+    nvim-treesitter-textobjects
+    catppuccin-nvim
   ];
 
   # function to resolve all dependencies
