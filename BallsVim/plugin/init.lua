@@ -1,5 +1,6 @@
 -- load plugin specs
-require("lz.n").load("specs")
+require('lze').register_handlers(require('lzextras').lsp)
+require("lze").load("specs")
 
 -- load configuration
 require("config")

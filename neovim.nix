@@ -10,10 +10,15 @@
 
   dependencies = with pkgs; [
     ripgrep
+
+    # language servers
+    lua-language-server
   ];
 
   startPlugins = with vimPlugins; [
-    lz-n
+    lze
+    lzextras
+    nvim-lspconfig
   ];
 
   optPlugins = with vimPlugins; [
