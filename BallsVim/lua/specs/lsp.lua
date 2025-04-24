@@ -37,7 +37,7 @@ return {
     ft = "lua",
     cmd = { "LazyDev" },
     after = function(_)
-      require("lazydev").setup({})
+      require("lazydev").setup()
     end,
   }
 }
