@@ -1,12 +1,16 @@
 {
   symlinkJoin,
-  neovim-unwrapped,
   makeWrapper,
   runCommandLocal,
   vimPlugins,
+  pkgs,
   lib,
 }: let
-  packageName = "BallsPack";
+  packageName = "balls-pack";
+
+  dependencies = with pkgs; [
+    ripgrep
+  ];
 
   startPlugins = with vimPlugins; [
     lz-n
@@ -48,8 +52,8 @@
   '';
 in 
 symlinkJoin {
-  name = "neovim-custom";
-  paths = [ neovim-unwrapped ];
+  name = "ballsvim";
+  paths = [ pkgs.neovim-unwrapped ] ++ dependencies;
   nativeBuildInputs = [ makeWrapper ];
   postBuild = ''
     wrapProgram $out/bin/nvim \
@@ -57,7 +61,8 @@ symlinkJoin {
       --add-flags 'NORC' \
       --add-flags '--cmd' \
       --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
-      --set-default NVIM_APPNAME nvim-custom
+      --set PATH ${lib.makeBinPath dependencies} \
+      --set-default NVIM_APPNAME ballsvim
   '';
   passthru = { inherit packpath; };
 }
