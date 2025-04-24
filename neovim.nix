@@ -13,6 +13,7 @@
 
     # language servers
     lua-language-server
+    nixd
   ];
 
   startPlugins = with vimPlugins; [

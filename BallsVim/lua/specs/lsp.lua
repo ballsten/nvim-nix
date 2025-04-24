@@ -29,6 +29,10 @@ return {
     lsp = {}
   },
   {
+    "nixd",
+    lsp = {}
+  },
+  {
     "lazydev.nvim",
     ft = "lua",
     cmd = { "LazyDev" },
