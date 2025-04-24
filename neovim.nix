@@ -14,6 +14,7 @@
   ];
 
   optPlugins = with vimPlugins; [
+    catppuccin-nvim
   ];
 
   # function to resolve all dependencies
