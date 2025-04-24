@@ -31,6 +31,7 @@
     ))
     nvim-treesitter-textobjects
     catppuccin-nvim
+    lazydev-nvim
   ];
 
   # function to resolve all dependencies

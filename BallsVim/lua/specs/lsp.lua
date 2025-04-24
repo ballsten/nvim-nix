@@ -28,4 +28,12 @@ return {
     "lua_ls",
     lsp = {}
   },
+  {
+    "lazydev.nvim",
+    ft = "lua",
+    cmd = { "LazyDev" },
+    after = function(_)
+      require("lazydev").setup({})
+    end,
+  }
 }
