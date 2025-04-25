@@ -37,6 +37,9 @@
     lazydev-nvim
     which-key-nvim
     snacks-nvim
+    lualine-nvim
+    bufferline-nvim
+    nvim-web-devicons
   ];
 
   # function to resolve all dependencies
