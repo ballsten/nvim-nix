@@ -10,6 +10,8 @@
 
   dependencies = with pkgs; [
     ripgrep
+    git
+    lazygit
 
     # language servers
     lua-language-server

@@ -1,12 +1,13 @@
--- load configuration
-require("config")
+-- set leader before anything else
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- load plugin specs
 require('lze').register_handlers(require('lzextras').lsp)
 require("lze").load("specs")
 
--- set default colorscheme
-vim.cmd.colorscheme("catppuccin-mocha")
+-- load configuration
+require("config")
 
 -- load plugins
 -- require("plugins")

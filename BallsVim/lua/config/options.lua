@@ -1,8 +1,7 @@
--- global options with no dependencies on plugins
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 local opt = vim.opt
+
+-- set default colorscheme
+vim.cmd.colorscheme("catppuccin-mocha")
 
 opt.autowrite = true -- Enable auto write
 -- only set clipboard if not in ssh, to make sure the OSC 52
