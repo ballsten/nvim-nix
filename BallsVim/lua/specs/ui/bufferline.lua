@@ -49,6 +49,7 @@ return {
             local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
             return icon, hl
           end,
+          highlights = require("catppuccin.groups.integrations.bufferline").get(),
         },
       })
     end,
