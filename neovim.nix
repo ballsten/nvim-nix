@@ -40,6 +40,7 @@
     lualine-nvim
     bufferline-nvim
     nvim-web-devicons
+    gitsigns-nvim
   ];
 
   # function to resolve all dependencies

@@ -7,4 +7,5 @@ return {
   { import = "specs.ui.lualine" },
   { import = "specs.ui.bufferline" },
   { import = "specs.ui.web-devicons" },
+  { import = "specs.ui.gitsigns" },
 }
