@@ -10,4 +10,5 @@ return {
   { import = "specs.ui.web-devicons" },
   { import = "specs.ui.gitsigns" },
   { import = "specs.ui.flash" },
+  { import = "specs.coding.mini-pairs" },
 }

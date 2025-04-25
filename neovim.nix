@@ -44,6 +44,7 @@
     flash-nvim
     friendly-snippets
     blink-cmp
+    mini-pairs
   ];
 
   # function to resolve all dependencies
