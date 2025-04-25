@@ -13,4 +13,5 @@ return {
   { import = "specs.coding.mini-pairs" },
   { import = "specs.coding.mini-ai" },
   { import = "specs.coding.ts-comments" },
+  { import = "specs.coding.lazydev" },
 }
