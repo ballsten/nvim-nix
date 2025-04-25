@@ -11,4 +11,6 @@ return {
   { import = "specs.ui.gitsigns" },
   { import = "specs.ui.flash" },
   { import = "specs.coding.mini-pairs" },
+  { import = "specs.coding.mini-ai" },
+  { import = "specs.coding.ts-comments" },
 }

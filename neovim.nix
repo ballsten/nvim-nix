@@ -45,6 +45,8 @@
     friendly-snippets
     blink-cmp
     mini-pairs
+    mini-ai
+    ts-comments-nvim
   ];
 
   # function to resolve all dependencies
