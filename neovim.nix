@@ -41,6 +41,7 @@
     bufferline-nvim
     nvim-web-devicons
     gitsigns-nvim
+    flash-nvim
   ];
 
   # function to resolve all dependencies

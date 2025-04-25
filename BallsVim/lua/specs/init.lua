@@ -8,4 +8,5 @@ return {
   { import = "specs.ui.bufferline" },
   { import = "specs.ui.web-devicons" },
   { import = "specs.ui.gitsigns" },
+  { import = "specs.ui.flash" },
 }
