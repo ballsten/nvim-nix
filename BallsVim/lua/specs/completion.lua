@@ -1,7 +1,6 @@
 return {
   {
     "blink.cmp",
-    for_cat = "code.completion",
     event = "DeferredUIEnter",
     after = function(_)
       require('blink.cmp').setup({
@@ -45,7 +44,6 @@ return {
   },
   {
     "friendly-snippets",
-    for_cat = "code.completion",
     dep_of = "blink.cmp",
   },
 }

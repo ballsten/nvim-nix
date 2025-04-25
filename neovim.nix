@@ -42,6 +42,8 @@
     nvim-web-devicons
     gitsigns-nvim
     flash-nvim
+    friendly-snippets
+    blink-cmp
   ];
 
   # function to resolve all dependencies
