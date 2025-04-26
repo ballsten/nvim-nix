@@ -90,6 +90,17 @@ return {
     "lualine.nvim",
     event = "DeferredUIEnter",
     after = function(_)
+      -- add trouble symbols
+      local trouble = require("trouble")
+      local symbols = trouble.statusline({
+        mode = "symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        hl_group = "lualine_c_normal",
+      })
+
       require('lualine').setup({
         options = {
           theme = "auto",
@@ -113,6 +124,12 @@ return {
             },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             { pretty_path() },
+            {
+              symbols and symbols.get,
+              cond = function()
+                return vim.b.trouble_lualine ~= false and symbols.has()
+              end,
+            }
           },
           lualine_x = {
             Snacks.profiler.status(),
