@@ -10,7 +10,7 @@ return {
       { "<c-space>", desc = "Increment Selection" },
       { "<bs>", desc = "Decrement Selection", mode = "x" },
     },
-    after = function(plugin)
+    after = function(_)
       --[[ configure treesitter ]]--
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true, },
