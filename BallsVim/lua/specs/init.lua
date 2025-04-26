@@ -18,6 +18,7 @@ return {
   { import = "specs.editor.flash" },
   { import = "specs.editor.gitsigns" },
   { import = "specs.editor.grug-far" },
+  { import = "specs.editor.todo-comments" },
   { import = "specs.editor.trouble" },
   { import = "specs.editor.which-key" },
 }

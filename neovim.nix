@@ -22,6 +22,9 @@
     lze
     lzextras
     nvim-lspconfig
+
+    # sticking in start because it maybe required by many plugins
+    plenary-nvim
   ];
 
   optPlugins = with vimPlugins; [
@@ -49,6 +52,7 @@
     ts-comments-nvim
     grug-far-nvim
     trouble-nvim
+    todo-comments-nvim
   ];
 
   # function to resolve all dependencies
