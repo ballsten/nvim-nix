@@ -111,7 +111,7 @@ return {
         input = { enabled = true },
         lazygit = { enabled = true },
         picker = { enabled = true },
-        notifier = { enabled = false },
+        notifier = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scratch = { enabled = true },

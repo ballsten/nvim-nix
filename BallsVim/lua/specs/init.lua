@@ -26,4 +26,8 @@ return {
   { import = "specs.editor.todo-comments" },
   { import = "specs.editor.trouble" },
   { import = "specs.editor.which-key" },
+
+  -- util
+  { import = "specs.util.plenary" },
+  { import = "specs.util.persistence" },
 }

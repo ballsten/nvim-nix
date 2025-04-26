@@ -22,9 +22,6 @@
     lze
     lzextras
     nvim-lspconfig
-
-    # sticking in start because it maybe required by many plugins
-    plenary-nvim
   ];
 
   optPlugins = with vimPlugins; [
@@ -57,6 +54,10 @@
     noice-nvim
     nui-nvim
     mini-icons
+
+    # util
+    persistence-nvim
+    plenary-nvim
   ];
 
   # function to resolve all dependencies
