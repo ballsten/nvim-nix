@@ -58,4 +58,11 @@ return {
       end
     end,
   },
+  {
+    "nvim-ts-autotag",
+    event = "DeferredUIEnter",
+    after = function (_)
+      require("nvim-ts-autotag").setup()
+    end
+  }
 }

@@ -53,6 +53,7 @@
     grug-far-nvim
     trouble-nvim
     todo-comments-nvim
+    nvim-ts-autotag
   ];
 
   # function to resolve all dependencies
