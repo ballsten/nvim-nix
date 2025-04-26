@@ -47,6 +47,7 @@
     mini-pairs
     mini-ai
     ts-comments-nvim
+    grug-far-nvim
   ];
 
   # function to resolve all dependencies

@@ -13,9 +13,10 @@ return {
   { import = "specs.coding.mini-ai" },
   { import = "specs.coding.ts-comments" },
   { import = "specs.coding.lazydev" },
-  
+
   -- editor
-  { import = "specs.editor.gitsigns" },
   { import = "specs.editor.flash" },
+  { import = "specs.editor.gitsigns" },
+  { import = "specs.editor.grug-far" },
   { import = "specs.editor.which-key" },
 }
