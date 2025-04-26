@@ -48,6 +48,7 @@
     mini-ai
     ts-comments-nvim
     grug-far-nvim
+    trouble-nvim
   ];
 
   # function to resolve all dependencies
