@@ -3,9 +3,14 @@ return {
   { import = "specs.treesitter" },
   { import = "specs.lsp" },
   { import = "specs.completion" },
-  { import = "specs.ui.snacks" },
-  { import = "specs.ui.lualine" },
+
+  -- ui
   { import = "specs.ui.bufferline" },
+  { import = "specs.ui.lualine" },
+  { import = "specs.ui.mini-icons" },
+  { import = "specs.ui.noice" },
+  { import = "specs.ui.nui" },
+  { import = "specs.ui.snacks" },
   { import = "specs.ui.web-devicons" },
 
   -- coding

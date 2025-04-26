@@ -54,6 +54,9 @@
     trouble-nvim
     todo-comments-nvim
     nvim-ts-autotag
+    noice-nvim
+    nui-nvim
+    mini-icons
   ];
 
   # function to resolve all dependencies
