@@ -23,7 +23,6 @@ let
     nixfmt-rfc-style
 
     # linters
-    luajitPackages.luacheck
   ];
 
   startPlugins = with vimPlugins; [

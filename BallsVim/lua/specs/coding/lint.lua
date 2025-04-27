@@ -3,7 +3,7 @@ return {
 	event = "DeferredUIEnter",
 	after = function(_)
 		require("lint").linters_by_ft = {
-			lua = { "luacheck" },
+			-- insert linters here
 		}
 		-- create autocmd to trigger linter
 		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
