@@ -3,6 +3,7 @@ return {
 		"lazydev.nvim",
 		ft = "lua",
 		cmd = { "LazyDev" },
+		dep_of = "blink.cmp",
 		after = function(_)
 			require("lazydev").setup({
 				library = {
