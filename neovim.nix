@@ -5,7 +5,8 @@
   vimPlugins,
   pkgs,
   lib,
-}: let
+}:
+let
   packageName = "balls-pack";
 
   dependencies = with pkgs; [
@@ -19,6 +20,7 @@
 
     # formatters
     stylua
+    nixfmt-rfc-style
 
     # linters
     luajitPackages.luacheck
@@ -83,23 +85,17 @@
   # startPluginsWithDeps = lib.unique (foldPlugins startPlugins);
   # optPluginsWithDeps = lib.unique (foldPlugins optPlugins);
 
-  packpath = runCommandLocal "packpath" {} ''
+  packpath = runCommandLocal "packpath" { } ''
     mkdir -p $out/pack/${packageName}/{start,opt}
     ln -vsfT ${./BallsVim} $out/pack/${packageName}/start/BallsVim
-    ${
-      lib.concatMapStringsSep
-      "\n"
-      (plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}")
-      startPlugins
-    }
-    ${
-      lib.concatMapStringsSep
-      "\n"
-      (plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/opt/${lib.getName plugin}")
-      optPlugins
-    }
+    ${lib.concatMapStringsSep "\n" (
+      plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}"
+    ) startPlugins}
+    ${lib.concatMapStringsSep "\n" (
+      plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/opt/${lib.getName plugin}"
+    ) optPlugins}
   '';
-in 
+in
 symlinkJoin {
   name = "ballsvim";
   paths = [ pkgs.neovim-unwrapped ] ++ dependencies;

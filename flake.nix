@@ -6,21 +6,30 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in 
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
       {
         packages = rec {
-          ballsvim = pkgs.callPackage ./neovim.nix {};
+          ballsvim = pkgs.callPackage ./neovim.nix { };
           default = ballsvim;
         };
 
         apps = rec {
-          ballsvim = flake-utils.lib.mkApp { 
+          ballsvim = flake-utils.lib.mkApp {
             drv = self.packages.${system}.ballsvim;
             name = "nvim";
           };
           default = ballsvim;
         };
-      });
+      }
+    );
 }
