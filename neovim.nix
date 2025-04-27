@@ -16,6 +16,12 @@
     # language servers
     lua-language-server
     nixd
+
+    # formatters
+    stylua
+
+    # linters
+    luajitPackages.luacheck
   ];
 
   startPlugins = with vimPlugins; [
@@ -34,7 +40,6 @@
     ))
     nvim-treesitter-textobjects
     catppuccin-nvim
-    lazydev-nvim
     which-key-nvim
     snacks-nvim
     lualine-nvim
@@ -44,9 +49,6 @@
     flash-nvim
     friendly-snippets
     blink-cmp
-    mini-pairs
-    mini-ai
-    ts-comments-nvim
     grug-far-nvim
     trouble-nvim
     todo-comments-nvim
@@ -54,6 +56,14 @@
     noice-nvim
     nui-nvim
     mini-icons
+
+    # coding
+    conform-nvim
+    lazydev-nvim
+    mini-pairs
+    mini-ai
+    nvim-lint
+    ts-comments-nvim
 
     # util
     persistence-nvim
