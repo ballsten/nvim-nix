@@ -23,6 +23,7 @@ return {
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (cwd)" },
       { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files (cwd)" },
+      -- notifications
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       -- picker find
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },

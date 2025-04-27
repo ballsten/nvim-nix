@@ -56,6 +56,15 @@ return {
           map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
         end,
       })
-    end
+      Snacks.toggle({
+        name = "Git Signs",
+        get = function()
+          return require("gitsigns.config").config.signcolumn
+        end,
+        set = function(state)
+          require("gitsigns").toggle_signs(state)
+        end,
+      }):map("<leader>uG")
+        end
   },
 }
