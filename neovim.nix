@@ -10,11 +10,6 @@ let
   packageName = "balls-pack";
 
   dependencies = with pkgs; [
-    ripgrep
-    git
-    lazygit
-    fd
-
     # language servers
     lua-language-server
     nixd
@@ -109,7 +104,6 @@ symlinkJoin {
       --add-flags 'NORC' \
       --add-flags '--cmd' \
       --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
-      --set PATH ${lib.makeBinPath dependencies} \
       --set-default NVIM_APPNAME ballsvim
   '';
   passthru = { inherit packpath; };
