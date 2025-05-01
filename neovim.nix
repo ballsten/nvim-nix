@@ -33,6 +33,10 @@ let
         nix
         regex
         bash
+        markdown
+        javascript
+        typescript
+        json
       ]
     ))
   ];

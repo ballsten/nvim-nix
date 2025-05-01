@@ -4,6 +4,7 @@ return {
 	after = function(_)
 		require("lint").linters_by_ft = {
 			-- insert linters here
+			ts = { "deno" },
 		}
 		-- create autocmd to trigger linter
 		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {

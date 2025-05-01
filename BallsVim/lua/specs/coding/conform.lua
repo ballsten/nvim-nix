@@ -20,6 +20,9 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				nix = { "nixfmt" },
+				md = { "deno_fmt" },
+				ts = { "deno_fmt" },
+				js = { "deno_fmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
