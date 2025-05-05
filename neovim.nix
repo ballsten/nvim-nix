@@ -13,12 +13,17 @@ let
     # language servers
     lua-language-server
     nixd
+    marksman
+    nodePackages.vscode-json-languageserver
+    typescript-language-server
 
     # formatters
     stylua
     nixfmt-rfc-style
+    prettierd
 
     # linters
+    eslint_d
   ];
 
   startPlugins = with vimPlugins; [
