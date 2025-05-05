@@ -40,8 +40,20 @@ return {
 		"nixd",
 		lsp = {},
 	},
+	-- {
+	-- 	"denols",
+	-- 	lsp = {},
+	-- },
 	{
-		"denols",
+		"ts_ls",
+		lsp = {},
+	},
+	{
+		"jsonls",
+		ls = {},
+	},
+	{
+		"marksman",
 		lsp = {},
 	},
 }
