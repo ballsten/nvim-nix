@@ -20,10 +20,8 @@ let
     # formatters
     stylua
     nixfmt-rfc-style
-    prettierd
 
     # linters
-    eslint_d
   ];
 
   startPlugins = with vimPlugins; [
