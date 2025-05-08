@@ -38,6 +38,7 @@ let
         javascript
         typescript
         json
+        html
       ]
     ))
   ];
