@@ -13,8 +13,6 @@ let
     # language servers
     lua-language-server
     nixd
-    marksman
-    nodePackages.vscode-json-languageserver
     typescript-language-server
 
     # formatters

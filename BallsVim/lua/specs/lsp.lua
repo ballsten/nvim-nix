@@ -48,12 +48,12 @@ return {
 		"ts_ls",
 		lsp = {},
 	},
-	{
-		"jsonls",
-		ls = {},
-	},
-	{
-		"marksman",
-		lsp = {},
-	},
+	-- {
+	-- 	"jsonls",
+	-- 	ls = {},
+	-- },
+	-- {
+	-- 	"marksman",
+	-- 	lsp = {},
+	-- },
 }
