@@ -30,6 +30,13 @@
           };
           default = ballsvim;
         };
+
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+          ];
+
+          shellHook = '''';
+        };
       }
     );
 }
