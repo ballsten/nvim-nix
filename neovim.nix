@@ -68,6 +68,7 @@ let
     lazydev-nvim
     mini-pairs
     mini-ai
+    mini-surround
     nvim-lint
     ts-comments-nvim
 
