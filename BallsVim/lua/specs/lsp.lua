@@ -24,12 +24,6 @@ return {
 					-- etc...
 				end,
 			})
-			if plugin.name == "denols" then
-				-- adding this because I was told to by https://github.com/neovim/nvim-lspconfig/blob/master/lsp/denols.lua
-				vim.g.markdown_fenced_languages = {
-					"ts=typescript",
-				}
-			end
 		end,
 	},
 	{
@@ -40,20 +34,18 @@ return {
 		"nixd",
 		lsp = {},
 	},
-	-- {
-	-- 	"denols",
-	-- 	lsp = {},
-	-- },
 	{
 		"ts_ls",
 		lsp = {},
 	},
-	-- {
-	-- 	"jsonls",
-	-- 	ls = {},
-	-- },
-	-- {
-	-- 	"marksman",
-	-- 	lsp = {},
-	-- },
+	{
+		"none-ls.nvim",
+		event = "DeferredUIEnter",
+		after = function(_)
+			local null_ls = require("null-ls")
+			null_ls.setup({
+				sources = null_ls.builtins.formatting.biome,
+			})
+		end,
+	},
 }
