@@ -19,6 +19,7 @@ return {
 	{ import = "specs.coding.lint" },
 	{ import = "specs.coding.mini-pairs" },
 	{ import = "specs.coding.mini-ai" },
+	{ import = "specs.coding.mini-surround" },
 	{ import = "specs.coding.ts-comments" },
 
 	-- editor

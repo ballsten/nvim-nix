@@ -34,6 +34,7 @@ let
         nix
         regex
         bash
+        css
         markdown
         javascript
         typescript
@@ -62,12 +63,14 @@ let
     noice-nvim
     nui-nvim
     mini-icons
+    none-ls-nvim
 
     # coding
     conform-nvim
     lazydev-nvim
     mini-pairs
     mini-ai
+    mini-surround
     nvim-lint
     ts-comments-nvim
 

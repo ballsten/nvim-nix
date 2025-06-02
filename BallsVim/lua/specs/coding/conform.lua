@@ -20,13 +20,19 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				nix = { "nixfmt" },
-				md = { "deno_fmt" },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
+				css = { "biome" },
+				json = { "biome" },
+				javascript = { "biome" },
+				typescript = { "biome" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
 				lsp_format = "fallback",
+			},
+			formatters = {
+				biome = {
+					require_cwd = true,
+				},
 			},
 		})
 	end,
