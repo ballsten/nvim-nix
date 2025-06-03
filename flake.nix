@@ -33,6 +33,13 @@
 
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
+            # language servers
+            lua-language-server
+            nixd
+
+            # formatters
+            stylua
+            nixfmt-rfc-style
           ];
 
           shellHook = '''';

@@ -35,7 +35,7 @@ return {
 		lsp = {},
 	},
 	{
-		"ts_ls",
+		"vtsls",
 		lsp = {},
 	},
 	{

@@ -10,16 +10,6 @@ let
   packageName = "balls-pack";
 
   dependencies = with pkgs; [
-    # language servers
-    lua-language-server
-    nixd
-    typescript-language-server
-
-    # formatters
-    stylua
-    nixfmt-rfc-style
-
-    # linters
   ];
 
   startPlugins = with vimPlugins; [
